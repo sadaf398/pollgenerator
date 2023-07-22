@@ -1,0 +1,99 @@
+form {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #f5f5f5;
+  border: 1px solid #ccc;
+  }
+  
+  @font-face {
+    font-family: 'B Nazanin';
+    src: url('fonts/BNazanin.ttf'); /* For IE9 and earlier */
+    src: local('B Nazanin'),
+         url('fonts/B-Nazanin.ttf') format('truetype'); /* For Safari, Android, iOS */
+  }
+  
+  body {
+    font-family: 'B Nazanin', sans-serif;
+    text-align: right;
+  }
+
+  h2 {
+    text-align: center;
+  }
+  
+  label {
+    display: block;
+    margin: 20px;
+  }
+
+  fieldset {
+    border: none;
+    margin: 0;
+    padding: 0;
+  }
+  
+  input[type="text"],
+  input[type="email"],
+  input[type="date"],
+  select,
+  textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    margin-top: 5px;
+    margin-bottom: 20px;
+    font-size: 16px;
+
+  }
+
+  input[type="checkbox"],
+  input[type="radio"]{
+    float: right;
+  }
+  
+  .rating-group {
+    display: flex;
+    flex-direction: row-reverse; 
+    flex-wrap: wrap;
+  }
+  
+  .rating-group label {
+    flex-basis: 25%;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    /* text-align: right; تغییر محل برچسب‌ها به راست */
+  }
+  
+  .rating-group input[type="range"] {
+    width: 100%;
+    margin-bottom: 5px;
+    /* direction: rtl; تغییر جهت به چپ به راست */
+  }
+
+  /* .rating-group output:last-of-type {
+    text-align: right; 
+    margin-left: 0;
+  } */
+  
+  button[type="submit"] {
+    background-color: #4CAF50;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+  }
+  
+  button[type="submit"]:hover {
+    background-color: #45a049;
+  }
+  .form-part {
+    margin-bottom: 20px;
+  }
+ .dnon{
+  display:none;
+ }
