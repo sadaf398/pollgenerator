@@ -15,16 +15,20 @@ form {
   
   body {
     font-family: 'B Nazanin', sans-serif;
+    font-size: large;
     text-align: right;
+    direction: rtl;
   }
 
   h2 {
-    text-align: center;
+    text-align:right;
+    font-size: medium;
   }
   
   label {
     display: block;
-    margin: 20px;
+    margin: 0px 30px;
+    
   }
 
   fieldset {
@@ -33,25 +37,29 @@ form {
     padding: 0;
   }
   
-  input[type="text"],
-  input[type="email"],
-  input[type="date"],
+input[type="text"],
+input[type="number"],
   select,
   textarea {
     width: 100%;
     padding: 10px;
     border: 1px solid #ccc;
-    border-radius: 4px;
+ background-color: #e4decd;
+    border-radius: 4px; 
     box-sizing: border-box;
     margin-top: 5px;
     margin-bottom: 20px;
     font-size: 16px;
 
   }
-
+ 
+input:focus{
+  background-color: #e4decd;
+}
   input[type="checkbox"],
   input[type="radio"]{
     float: right;
+    margin-top:auto;
   }
   
   .rating-group {
@@ -73,27 +81,67 @@ form {
     /* direction: rtl; تغییر جهت به چپ به راست */
   }
 
-  /* .rating-group output:last-of-type {
-    text-align: right; 
-    margin-left: 0;
-  } */
-  
-  button[type="submit"] {
-    background-color: #4CAF50;
-    color: white;
-    padding: 12px 20px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    font-size: 16px;
+  .buttons{
+    text-align: center;
   }
   
-  button[type="submit"]:hover {
+  button {
+    font-family: 'B Nazanin', sans-serif;
+    font-weight: bold;
+    font-size:medium;
+    background-color: #4CAF50;
+    color: white;
+    padding: 7px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+ 
+    margin: 10px 3px;
+  }
+  
+  button:hover {
     background-color: #45a049;
   }
   .form-part {
     margin-bottom: 20px;
+    
   }
  .dnon{
   display:none;
  }
+ /* استایل برای فیلدهای عنوان صفحه */
+#pageTitles {
+  display: flex;
+  flex-direction: column;
+}
+
+#pageTitles > div {
+  display: none;
+}
+
+#pageTitles > div.active {
+  display: block;
+}
+
+/* استایل برای فیلد عنوان صفحه فعلی */
+#pageTitles input[type="text"] {
+  margin-bottom: 8px;
+}
+.active {
+  display: block;
+} 
+
+.current_page{
+  display: block;
+}
+table {
+  border-collapse: collapse; /* ترکیب حواشی */
+  width: 100%;
+}
+
+td, th {
+  border: 1px solid black; /* تعیین حاشیه سیاه برای هر خانه */
+  font-size: 12px;
+  text-align: center; /* وسط چین کردن محتوای خانه‌ها */
+  vertical-align: middle; /* وسط چین کردن ارتفاع محتوای خانه‌ها */
+}
