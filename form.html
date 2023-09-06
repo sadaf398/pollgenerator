@@ -1,17 +1,24 @@
-
-
 <!DOCTYPE html> 
-<html>
+<html style="  height: 100%;
+margin: 0;
+padding: 0;">
    <head> 
     <meta charset="UTF-8">
-    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js">  
-    </script>  
-
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.17.5/xlsx.min.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ 
+    <!-- <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js">  
+    </script>   -->
+   <script src="https://cdn.jsdelivr.net/npm/jszip@3.7.1/dist/jszip.min.js" defer></script>
+   <script src="https://cdn.jsdelivr.net/npm/chart.js" ></script>
+   <!-- <script type="module" src="node_modules/exceljs/dist/exceljs.min.js"></script> -->
+  <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.17.5/xlsx.min.js"></script> -->
     <title>poll</title> <link rel="stylesheet" href="style.css"> </head> 
-<body> 
-   
-
+<body style="background-color:#e4decd;  display: flex;
+justify-content: center;
+align-items: center;
+"> 
+    
+<!-- 
   <div id="part1" class="form-part ">
     <h2>قسمت اول</h2>
 <form id="workbook">
@@ -107,11 +114,66 @@
     <button onclick="prevPart()">قبلی</button>
     <button onclick="submitForm()">ارسال</button>
   </div>
-  </form>
-  
-  
+  </form> -->
 
+
+
+<!-- 
   
+  <form id="questionContainer"></form>
+  <div class="buttons">
+  <button id="previousBtn" onclick="showPreviousQuestion()">قبلی</button>
+  <button id="nextBtn" onclick="showNextQuestion()">بعدی</button>
+  <button id="submitBtn" class="dnon" type="submit" onclick="submitForm()">ارسال</button>
+  </div> -->
+
+
+ 
+
+  <!-- <h1>دریافت اطلاعات صفحات</h1> -->
+  <form id="mainForm" style="background-color:rgb(216, 216, 216) ;border-radius: 1em;">
+    <div class="firstForm">
+    <label for="totalPages">تعداد صفحات فرم:</label>
+    <input type="number" id="totalPages" name="totalPages" min="1"><br>
+    <button type="button" onclick="addPageTitles()" style="background-color:#82716e; color:#e4decd;  ">ثبت</button>
+    </div>
+
+    <div id="pageTitles" class="dnon">
+    </div>
+
+    <div id="pages" class="dnon">  
+    </div> 
+  
+    <div id="download-container">
+      <button id="download-button" style="background-color:#e4decd; color:#82716e; border-color: #82716e; border-style: solid; border-width: 1.5px;"> دانلود فرم</button>
+      <button id="get-button" style="background-color:#e4decd; color:#82716e; border-color: #82716e; border-style: solid; border-width: 1.5px;"onclick="loadChartData()">دریافت اطلاعات و رسم نمودار  📊</button>
+      <button id="show-button" class="dnon">show</button>
+    </div>
+     
+ 
+    <div class="questionsForm dnon">
+      <div id="questionsInputContainer">
+        <!-- جایگزینی سوالات توسط جاوا اسکریپت -->
+      </div>
+
+      <div class="btn1">
+    <button type="button" id="addQuestion"style="background-color:#82716e; color:#e4decd;  " onclick="addQuestionInput()">افزودن سوال</button><br>
+    <button id="nextButton" style="color: #e4decd;; background-color: #1d1145; " onclick="showNextQuestion()">صفحه بعدی</button>
+    <button id="submit" type="submit" class="dnon" style="color: #e4decd;; background-color: #1d1145; " onclick="submitForm()">ارسال فرم</button>
+    </div> </div>
+    <div id="results"></div>
+    <canvas id="chartCanvas" width="400" height="400"></canvas>
+    
+
+  </form> 
+
+
+
+
+
+
+
+
 
 <!-- 
 // $(function() {
@@ -143,11 +205,11 @@
 //  });
 // }); -->
 
-
+ 
 
   <script src="script.js"></script>
-
+ 
 
 
 </body>
-</html>
+</html> 
