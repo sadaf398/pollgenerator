@@ -446,20 +446,45 @@ function submitForm() {
   pageIndex = pagesData.length - 1;
   savePageDataToJson(pageIndex); 
   console.log(formDataCollection);
-     
-  const jsonContent = JSON.stringify(formDataCollection, null, 2); // تب‌های فرمت‌بندی برای خوانایی
-  const jsonBlob = new Blob([jsonContent], { type: 'application/json' });
-  
-  const downloadLink = document.createElement('a');
-  downloadLink.href = URL.createObjectURL(jsonBlob);
-  downloadLink.download = 'questionData.json';
-  downloadLink.textContent = 'دانلود اطلاعات فرم';
-  downloadLink.style.textDecoration='none';
-  downloadLink.style.color='#1d1145';
-  
-  const downloadContainer = document.getElementById('download-container');
-  //downloadContainer.innerHTML = '';
-  downloadContainer.appendChild(downloadLink);
+    
+// تبدیل داده به متن JSON
+const jsonContent = JSON.stringify(formDataCollection, null, 2); // تب‌های فرمت‌بندی برای خوانایی
+
+// تولید یک عدد تصادفی برای نام فایل
+const randomId = Math.floor(Math.random() * 1000); // یک عدد تصادفی بین 0 و 999
+
+// نام فایل جدید
+const filename = `questionData_${randomId}.json`;
+
+// ایجاد Blob از محتوای JSON
+const jsonBlob = new Blob([jsonContent], { type: 'application/json' });
+
+// ایجاد دایرکتوری "questions" اگر وجود نداشته باشد
+if (!window.FileSystemDirectoryHandle) {
+  // اگر FileSystemDirectoryHandle وجود ندارد، می‌توانید از FileSystemDirectoryHandle.getDirectory استفاده کنید
+  // این بخش به متصل کردن به دایرکتوری اصلی سیستم عامل مربوط می‌شود که ممکن است برخی از مرورگرها اجازه دسترسی به آن را ندهند.
+} else {
+  (async () => {
+    try {
+      // باز کردن دایرکتوری "questions" یا ایجاد آن اگر وجود نداشته باشد
+      const directoryHandle = await window.showDirectoryPicker();
+      const questionsDirectoryHandle = await directoryHandle.getDirectoryHandle('questionFiles', { create: true });
+
+      // ایجاد یک فایل با نام تصادفی در دایرکتوری "questions"
+      const fileHandle = await questionsDirectoryHandle.getFileHandle(filename, { create: true });
+
+      // نوشتن داده‌های فایل
+      const writable = await fileHandle.createWritable();
+      await writable.write(jsonBlob);
+      await writable.close();
+
+      console.log(`فایل ${filename} با موفقیت ایجاد شد.`);
+
+    } catch (error) {
+      console.error(`خطا در ایجاد فایل: ${error}`);
+    }
+  })();
+}
 
   downloadFormAsHtml(); 
   
