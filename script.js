@@ -1450,9 +1450,9 @@ async function fetchJSONData(file) {
 let questionData;
 let userResponses;
 async function loadChartData() {
- questionData = await fetchJSONData('questionData.json'); // مسیر فایل JSON
+ questionData = await fetchJSONData('/Users/sadaf/Desktop/FinalProject/questionFiles/questionData.json'); // مسیر فایل JSON
   // انجام پردازش دیگر بر روی داده‌های دریافتی (مانند تولید نمودارها)
- userResponses = await fetchJSONData('userResponses.json');
+ userResponses = await fetchJSONData('/Users/sadaf/Desktop/FinalProject/responseFiles/userResponses.json');
   // مثال: چاپ داده‌ها در کنسول
  
 console.log(questionData,userResponses);
